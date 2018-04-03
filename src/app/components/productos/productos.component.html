@@ -1,53 +1,39 @@
-   
-   <p>Referecias</p>
-   <select class="custom-select" id="inputGroupSelect01">
-        <option selected>Seleccione</option>
-        <option *ngFor="let referecia of refs" value="{{referecia.id}}">{{referecia.detalle}}</option>      
-    </select>
-    
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Upload</span>
-        </div>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile01">
-          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-        </div>
-      </div>
-      
-      <div class="input-group mb-3">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile02">
-          <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-        </div>
-        <div class="input-group-append">
-          <span class="input-group-text" id="">Upload</span>
-        </div>
-      </div>
-      
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary" type="button">Button</button>
-        </div>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile03">
-          <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
-        </div>
-      </div>
-      
-      <div class="input-group">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile04">
-          <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-        </div>
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">Button</button>
-        </div>
-      </div>
+<form (ngSubmit)="guardar(formulario)" #formulario="ngForm">
 
+    <div class="container">
+        <div class="col-6 col-md-4">
+            <p class="font-italic">Nombre:</p>
+            <input class="form-control" type="text" name="nombre">
+        </div>
 
- 
+        <div class="col-6 col-md-4">
+            <p class="font-italic">Cantidad:</p>
+            <input type="number" class="form-control" name="cantidad">
+        </div>
 
+        <div class="col-6 col-md-4">
 
+            <p class="font-italic">Referecias:</p>
+            <select class="form-control" name="referencia" id="inputGroupSelect01">
+       <option selected>Seleccione</option>
+       <option *ngFor="let referecia of refs" value="{{referecia.id}}">{{referecia.detalle}}</option>      
+   </select>
+        </div>
 
+        <div class="col-6 col-md-4">
+            <p class="font-italic"> Colores:</p>
+            <select class="form-control" name="color" id="inputGroupSelect01">
+         <option selected>Seleccione</option>
+         <option *ngFor="let color of colors" value="{{color.id}}">{{color.detalle}}</option>      
+     </select>
+        </div>
 
+        <div class="row col-6 col-md-4">
+            <input class="form-control" #myInput type="file" placeholder="File Name" name="filename" (change)="onChange($event)">
+        </div>
+
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary btn-block"> Siguiente</button>
+        </div>
+    </div>
+</form>

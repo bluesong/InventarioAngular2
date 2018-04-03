@@ -1,4 +1,18 @@
-.main-container{
-  margin-top: 40px;
+.main-container {
+    margin-top: 40px;
+}
 
-  }/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+
+.row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 100px;
+}
+
+.thumb {
+    height: 300px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}

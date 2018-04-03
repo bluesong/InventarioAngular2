@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 //rutas
 import {app_routing} from './app.routes';
 //componentes
@@ -15,6 +16,7 @@ import {AuthService} from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     app_routing,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
