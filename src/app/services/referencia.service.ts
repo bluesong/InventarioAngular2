@@ -17,7 +17,6 @@ export class ReferenciaService {
 
 
   getReferencias (): Observable<referencia[]> {
-    console.log(1);
     return this.http.get<referencia[]>(this.heroesUrl)
   }
 

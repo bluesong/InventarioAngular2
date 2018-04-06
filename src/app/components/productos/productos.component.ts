@@ -9,20 +9,22 @@ import { ColorService } from '../../services/color.service';
 import { NgForm} from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
-  providers: [ ReferenciaService , ColorService]
+  providers: [ ReferenciaService , ColorService ,ProductosService]
 })
 export class ProductosComponent  {
-  Productos: producto[] = [];
+  productos: producto[] = [];
   refs: referencia[] = [];
   colors: color [] = [];
   imageToShow: any;
   
-  constructor(private referenciaService: ReferenciaService, private colorservice: ColorService , private zone: NgZone){ 
+  constructor(private referenciaService: ReferenciaService, private colorservice: ColorService , private zone: NgZone ,private productosService:ProductosService){ 
      this.LoadReferencias();
      this.LoadColors();
+     this.LoadProducts();
   }
 
   onChange(event) {
@@ -49,6 +51,15 @@ export class ProductosComponent  {
     .subscribe(colores => {
       this.zone.run(() => {
         this.colors = colores;
+      });
+    });
+  }
+  LoadProducts() {
+    this.productosService.getProductos()
+    .subscribe(productos => {
+      this.zone.run(() => {
+        this.productos = productos;
+        console.log(this.productos)
       });
     });
   }

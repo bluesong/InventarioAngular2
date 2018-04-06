@@ -1,23 +1,17 @@
 <form (ngSubmit)="guardar(formulario)" #formulario="ngForm">
+    <div>
 
-    <div class="container">
-        <div class="col-6 col-md-4">
-            <p class="font-italic">Nombre:</p>
-            <input class="form-control" type="text" name="nombre">
-        </div>
+    <div class="col-6 col-md-4">
+        <p class="font-italic">Producto:</p>
+        <select class="form-control" name="producto" id="inputGroupSelect01">
+    <option selected>Seleccione</option>
+    <option *ngFor="let prod of productos" value="{{prod.id}}">{{prod.nombre}}</option>      
+         </select>
+    </div>
 
         <div class="col-6 col-md-4">
             <p class="font-italic">Cantidad:</p>
             <input type="number" class="form-control" name="cantidad">
-        </div>
-
-        <div class="col-6 col-md-4">
-
-            <p class="font-italic">Referecias:</p>
-            <select class="form-control" name="referencia" id="inputGroupSelect01">
-       <option selected>Seleccione</option>
-       <option *ngFor="let referecia of refs" value="{{referecia.id}}">{{referecia.detalle}}</option>      
-   </select>
         </div>
 
         <div class="col-6 col-md-4">

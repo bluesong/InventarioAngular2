@@ -1,7 +1,5 @@
 export interface producto {
     id:number;
-    dettalle:string;
-    cantidad:number;
+    nombre:string;
     referencia:number;
-    color:number;
     };
