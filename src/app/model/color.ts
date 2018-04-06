@@ -1,4 +1,4 @@
 export interface color {
-    id:number;
-    dettalle:string;
+    id: number;
+    dettalle: string;
     };

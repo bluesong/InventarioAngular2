@@ -1,33 +1,36 @@
 <form (ngSubmit)="guardar(formulario)" #formulario="ngForm">
-    <div>
 
-    <div class="col-6 col-md-4">
-        <p class="font-italic">Producto:</p>
-        <select class="form-control" name="producto" id="inputGroupSelect01">
-    <option selected>Seleccione</option>
-    <option *ngFor="let prod of productos" value="{{prod.id}}">{{prod.nombre}}</option>      
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-5">
+                <p class="font-italic">Producto:</p>
+                <select class="form-control" name="producto" id="inputGroupSelect01">
+        <option selected>Seleccione</option>
+        <option *ngFor="let prod of productos" value="{{prod.id}}">{{prod.nombre}}</option>      
+             </select>
+
+                <p class="font-italic">Cantidad:</p>
+                <input type="number" class="form-control" name="cantidad">
+
+
+
+                <p class="font-italic"> Colores:</p>
+                <select class="form-control" name="color" id="inputGroupSelect01">
+             <option selected>Seleccione</option>
+             <option *ngFor="let color of colors" value="{{color.id}}">{{color.detalle}}</option>      
          </select>
-    </div>
 
-        <div class="col-6 col-md-4">
-            <p class="font-italic">Cantidad:</p>
-            <input type="number" class="form-control" name="cantidad">
-        </div>
 
-        <div class="col-6 col-md-4">
-            <p class="font-italic"> Colores:</p>
-            <select class="form-control" name="color" id="inputGroupSelect01">
-         <option selected>Seleccione</option>
-         <option *ngFor="let color of colors" value="{{color.id}}">{{color.detalle}}</option>      
-     </select>
-        </div>
 
-        <div class="row col-6 col-md-4">
-            <input class="form-control" #myInput type="file" placeholder="File Name" name="filename" (change)="onChange($event)">
-        </div>
+                <input class="form-control" #myInput type="file" placeholder="File Name" name="filename" (change)="onChange($event)">
 
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary btn-block"> Siguiente</button>
+
+                <button type="button" class="btn btn-primary btn-block"> Siguiente</button>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 col-md-6">
+                <img alt="" class="e2e-trusted-url img-thumbnail" style=" width: 460px " [src]="domSanitizer.bypassSecurityTrustUrl(imageToShow) ">
+            </div>
         </div>
     </div>
 </form>
