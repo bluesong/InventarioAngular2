@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule, NgForm ,ReactiveFormsModule} from '@angular/forms';
 //rutas
 import {app_routing} from './app.routes';
 //componentes
@@ -32,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     app_routing,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

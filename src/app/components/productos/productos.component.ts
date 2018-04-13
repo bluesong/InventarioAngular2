@@ -1,13 +1,14 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { producto } from '../../model/productos';
-import { referencia } from '../../model/referencia';
+import { producto_color } from '../../model/productos_color';
 import { color } from '../../model/color';
 import { Observable} from 'rxjs/Observable';
 import { ProductosService } from '../../services/productos.service';
 import { ReferenciaService } from '../../services/referencia.service';
 import { ColorService } from '../../services/color.service';
-import { NgForm} from '@angular/forms';
+import { NgForm ,FormGroup, FormControl , Validator, Validators} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
+
 
 
 @Component({
@@ -17,22 +18,32 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class ProductosComponent  {
   productos: producto[] = [];
-  refs: referencia[] = [];
   colors: color [] = [];
   imageToShow: any;
   base_img = 'data:image/jpeg;base64,';
+  forma:FormGroup;
+  producto_color:producto_color
 
   constructor(private referenciaService: ReferenciaService, private colorservice: ColorService ,
     private zone: NgZone , private productosService: ProductosService,
     public domSanitizer: DomSanitizer) {
-     this.loadReferencias();
+
      this.loadColors();
      this.loadProducts();
+    
+     this.forma = new FormGroup({
+     'producto':  new  FormControl('' ,Validators.required),
+     'color':  new  FormControl('' ,Validators.required),
+     'imagen':  new  FormControl("" ,Validators.required)
+     })
+  }
+
+  guardar(){
+    this.producto_color = this.forma.value
+    this.producto_color.imagen = this.imageToShow;
   }
 
   onChange(event) {
-    console.log( event.target.files[0].name );
-    console.log( event.target.files[0]);
     const maxfile = 3145728;
     const fileList: FileList = event.target.files;
     if (fileList.length > 0 ) {
@@ -41,6 +52,7 @@ export class ProductosComponent  {
         if (size > maxfile) {
         }else {
           this.getBase64(file);
+          
         }
     }
 
@@ -58,15 +70,6 @@ export class ProductosComponent  {
    };
   }
 
-  loadReferencias() {
-    this.referenciaService.getReferencias()
-    .subscribe(referencias => {
-      this.zone.run(() => {
-        this.refs = referencias;
-      });
-    });
-  }
-
   loadColors() {
     this.colorservice.getColores()
     .subscribe(colores => {
@@ -80,7 +83,6 @@ export class ProductosComponent  {
     .subscribe(productos => {
       this.zone.run(() => {
         this.productos = productos;
-        console.log(this.productos);
       });
     });
   }
