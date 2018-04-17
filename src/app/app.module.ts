@@ -14,6 +14,7 @@ import { VentasComponent } from './components/ventas/ventas.component';
 //sevicios
 import {AuthService} from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ParametrosComponent } from './components/parametros/parametros.component';
 
 
 
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     PreciosComponent,
     OcultaComponent,
     ProductosComponent,
-    VentasComponent
+    VentasComponent,
+    ParametrosComponent
   ],
   imports: [
     BrowserModule,
