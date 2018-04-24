@@ -11,10 +11,12 @@ import { PreciosComponent } from './components/precios/precios.component';
 import { OcultaComponent } from './components/oculta/oculta.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { VentasComponent } from './components/ventas/ventas.component';
+import { ParametrosComponent } from './components/parametros/parametros.component';
 //sevicios
 import {AuthService} from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ParametrosComponent } from './components/parametros/parametros.component';
+
+import { Globals } from "./model/globals";
 
 
 
@@ -36,7 +38,8 @@ import { ParametrosComponent } from './components/parametros/parametros.componen
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,Globals],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
